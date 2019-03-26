@@ -20,9 +20,12 @@ class GradientDescent:
 
     def calculate(self, starting_t0=None, starting_t1=None, learning_rate=None):
         # if starting theta's or lr provided, check and replace
-        TypeHelper.is_digit(starting_t0, none=True)
-        TypeHelper.is_digit(starting_t1, none=True)
-        TypeHelper.is_digit(learning_rate, none=True)
+        if TypeHelper.is_digit(starting_t0, none=True):
+            self.theta0 = starting_t0
+        if TypeHelper.is_digit(starting_t0, none=True):
+            self.theta1 = starting_t1
+        if TypeHelper.is_digit(starting_t0, none=True):
+            self.learning_rate = learning_rate
 
         max_iterations = 10000
         temp_t0 = self.theta0

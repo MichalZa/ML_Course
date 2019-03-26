@@ -18,5 +18,4 @@ class WeekOne:
 
 
 # run
-week_one = WeekOne()
-print(week_one.run_gd())
+print(WeekOne.run_gd())
