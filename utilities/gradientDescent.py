@@ -1,11 +1,14 @@
+from utilities.utils import TypeHelper
+
+
 class GradientDescent:
 
     def __init__(self, params={}):
         # init params
-        self.theta0 = params['theta0'] if 'theta0' in params and params['theta0'].isdigit() else 0
-        self.theta1 = params['theta1'] if 'theta1' in params and params['theta1'].isdigit() else 0
-        self.learning_rate = params['learning_rate'] if 'learning_rate' in params and params['learning_rate'].isdigit() else 0.01
-        self.data = params['data'] if 'data' in params else []
+        self.theta0 = 0
+        self.theta1 = 0
+        self.learning_rate = 0.01
+        self.data = params['data'] if 'data' in params and isinstance(params['data'], list) else []
         self.m = len(self.data)
 
     def _derivative(self):
@@ -15,12 +18,11 @@ class GradientDescent:
         self.theta0 = self.theta0 - self.learning_rate * theta0_dx
         self.theta1 = self.theta1 - self.learning_rate * theta1_dx
 
-    def calculate(self, starting_t0=None, starting_t1=None):
-        # if starting theta's provided check type and replace
-        if isinstance(starting_t0, float) or isinstance(starting_t0, int):
-            self.theta0 = starting_t0
-        if isinstance(starting_t1, float) or isinstance(starting_t1, int):
-            self.theta0 = starting_t1
+    def calculate(self, starting_t0=None, starting_t1=None, learning_rate=None):
+        # if starting theta's or lr provided, check and replace
+        TypeHelper.is_digit(starting_t0, none=True)
+        TypeHelper.is_digit(starting_t1, none=True)
+        TypeHelper.is_digit(learning_rate, none=True)
 
         max_iterations = 10000
         temp_t0 = self.theta0

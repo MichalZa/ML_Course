@@ -8,7 +8,13 @@ class WeekOne:
         # add reading from file or generate data
         data = {}
         gd = GradientDescent(data)
-        return gd.calculate()
+        try:
+            result = gd.calculate()
+        except Exception as e:
+            print('Error occured: %s', str(e))
+            return
+
+        return result
 
 
 # run
